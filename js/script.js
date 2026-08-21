@@ -58,7 +58,7 @@ function renderLangButtons() {
     const b = document.createElement('button');
     b.textContent = label;
     b.className = STATE.lang === code ? 'active' : '';
-    b.onclick = () => { STATE.lang = code; localStorage.setItem('cn_lang', code); applyI18n(); router(); };
+    b.onclick = () => { STATE.lang = code; localStorage.setItem('cn_lang', code);$$('#app .copy-btn').forEach(b => bindCopy(b, b.closest('.codebox').querySelector('pre').innerText)); applyI18n(); router(); };
     box.appendChild(b);
   });
 }
