@@ -1,46 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CodeNexa — AI/ML, R & CMD Free Course in Hindi, English, Hinglish</title>
-  <meta name="description" content="CodeNexa: 100% free platform to learn AI/ML, R language and CMD from zero. Hindi, English aur Hinglish me, code ke saath." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237c6cff'/%3E%3Ctext x='32' y='42' font-size='24' font-family='Arial' font-weight='bold' text-anchor='middle' fill='white'%3E%3C/text%3E%3C/svg%3E" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeNexa | Free AI, ML & R Language Institute</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
 
-  <nav class="navbar">
-    <div class="container nav-inner">
-      <a class="brand" href="#/">
-        <span class="logo">CN</span>
-        <span id="brandName">CodeNexa</span>
-      </a>
-      <div class="nav-links" id="navLinks">
-        <a href="#/" data-i18n="nav_home">Home</a>
-        <a href="#/c/ml" data-i18n="nav_ml">AI/ML</a>
-        <a href="#/c/r" data-i18n="nav_r">R</a>
-        <a href="#/c/cmd" data-i18n="nav_cmd">CMD</a>
-        <a href="#/" data-faq data-i18n="nav_faq">FAQ</a>
-        <div class="lang-switch" id="langBox"></div>
-      </div>
-      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
+    <!-- NAVBAR -->
+    <nav class="bg-emerald-700 text-white px-6 py-4 flex justify-between items-center sticky top-0 z-50 shadow-md">
+        <div class="flex items-center space-x-2">
+            <i class="fa-solid fa-graduation-cap text-yellow-300 text-2xl"></i>
+            <span class="text-2xl font-bold tracking-tight">Code<span class="text-yellow-300">Nexa</span> Academy</span>
+        </div>
+        
+        <div class="flex items-center space-x-4">
+            <span class="hidden md:inline-block text-xs bg-emerald-800 text-emerald-100 px-3 py-1 rounded-full font-medium">🇮🇳 100% Free Open Learning</span>
+            <button onclick="openLoginModal()" class="border border-white/80 hover:bg-white hover:text-emerald-800 px-4 py-1.5 rounded-lg text-sm font-semibold transition">
+                Student Login
+            </button>
+        </div>
+    </nav>
 
-  <div id="app"></div>
+    <!-- HERO SECTION -->
+    <header class="bg-emerald-700 text-white text-center py-20 px-4 border-b border-emerald-800">
+        <div class="max-w-4xl mx-auto space-y-6">
+            <div class="inline-block bg-emerald-800/80 border border-emerald-500 px-4 py-1.5 rounded-full text-xs font-semibold text-yellow-300">
+                🎓 No Coding Background Required · Zero Cost
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-tight">
+                Master AI, Machine Learning & R <br/>
+                <span class="text-yellow-300">Like a Professional</span>
+            </h1>
+            
+            <p class="text-emerald-100 text-lg md:text-xl max-w-2xl mx-auto font-normal leading-relaxed">
+                Learn Command Line (CMD), R Programming, Data Science, and AI step-by-step with interactive labs in Hinglish, Hindi, and English.
+            </p>
 
-  <footer>
-    <div class="container">
-      <p data-i18n="footer_made">Made with ❤️ for free learners — CodeNexa</p>
-      <p class="powered">Powered by JD</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+                <button onclick="startOnboarding()" class="w-full sm:w-auto bg-yellow-400 text-slate-900 hover:bg-yellow-300 font-bold px-8 py-4 rounded-xl shadow-lg transition text-lg flex items-center justify-center gap-2">
+                    <span>Start Learning Free</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ONBOARDING MODAL -->
+    <div id="onboarding-modal" class="hidden fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white max-w-md w-full rounded-2xl p-6 shadow-2xl space-y-6 relative border border-slate-200">
+            <button onclick="closeOnboarding()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <!-- Step 1 -->
+            <div id="quiz-step-1" class="space-y-4">
+                <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Assessment · Step 1 of 2</span>
+                <h3 class="text-2xl font-extrabold text-slate-900">Aapko Coding ka kitna experience hai?</h3>
+
+                <div class="space-y-2 pt-2">
+                    <button onclick="nextStep()" class="w-full text-left border border-slate-200 p-3.5 rounded-xl hover:border-emerald-600 hover:bg-emerald-50 font-medium transition flex justify-between items-center">
+                        <span>🌱 Mujhe Bilkul Kuch Nahi Aata (Absolute Beginner)</span>
+                        <i class="fa-solid fa-chevron-right text-slate-400 text-sm"></i>
+                    </button>
+                    <button onclick="nextStep()" class="w-full text-left border border-slate-200 p-3.5 rounded-xl hover:border-emerald-600 hover:bg-emerald-50 font-medium transition flex justify-between items-center">
+                        <span>💻 Computer Basics Aata Hai</span>
+                        <i class="fa-solid fa-chevron-right text-slate-400 text-sm"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div id="quiz-step-2" class="hidden space-y-4">
+                <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Preference · Step 2 of 2</span>
+                <h3 class="text-2xl font-extrabold text-slate-900">Aap kis language mein padhna chahte hain?</h3>
+
+                <div class="space-y-2 pt-2">
+                    <button onclick="finishOnboarding('hinglish')" class="w-full text-left border border-slate-200 p-3.5 rounded-xl hover:border-emerald-600 hover:bg-emerald-50 font-medium transition flex justify-between items-center">
+                        <span>🗣️ Hinglish (Hindi + English)</span>
+                        <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">Popular</span>
+                    </button>
+                    <button onclick="finishOnboarding('hindi')" class="w-full text-left border border-slate-200 p-3.5 rounded-xl hover:border-emerald-600 hover:bg-emerald-50 font-medium transition">
+                        <span>🇮🇳 हिंदी (Hindi)</span>
+                    </button>
+                    <button onclick="finishOnboarding('english')" class="w-full text-left border border-slate-200 p-3.5 rounded-xl hover:border-emerald-600 hover:bg-emerald-50 font-medium transition">
+                        <span>🌐 Pure English</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-  <footer>
-    <div class="container footer-inner">
-      <p data-i18n="footer_made">Made with ❤️ for free learners</p>
-      <p class="powered">Powered by JD</p>
-    </div>
-  </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
